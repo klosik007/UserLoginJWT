@@ -12,8 +12,6 @@ import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var JSONObj: JSONObject
-    private val URL: String = "localhost/JWT_Auth/index.php"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +20,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.loginBtn.setOnClickListener{
-            //login to service
+            val email = binding.emailTxt.text.toString()
+            val password = binding.passwordTxt.text.toString()
+
+            val login = LoginAttempt(applicationContext, email, password)
+            login.perform()
         }
 
         binding.signupBtn.setOnClickListener{
             //sign up new user
         }
     }
-
-
 }
