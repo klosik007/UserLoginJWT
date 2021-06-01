@@ -3,12 +3,6 @@ package com.example.userloginjwt
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.userloginjwt.databinding.ActivityMainBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -23,7 +17,7 @@ class MainActivity : AppCompatActivity() {
             val email = binding.emailTxt.text.toString()
             val password = binding.passwordTxt.text.toString()
 
-            val login = LoginAttempt(applicationContext, email, password)
+            val login = LoginAttempt(email, password)
             login.perform()
         }
 
