@@ -4,12 +4,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.ResponseBody
 import org.json.JSONObject
+import retrofit2.Response
 
 abstract class NetworkOperations {
     abstract fun doWorkBeforeBackground()
-    abstract fun doInBackground(): JSONObject?
-    abstract fun doWorkAfterBackground(json: JSONObject?)
+    abstract suspend fun doInBackground(): Response<ResponseBody>
+    abstract suspend fun doWorkAfterBackground(result: Response<ResponseBody>)
 
     fun perform(){
         doWorkBeforeBackground()//preExecute
